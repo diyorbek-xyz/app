@@ -1,0 +1,45 @@
+# Flutter/Dart/Pub stuff
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+
+# Dependency lock files (if you don’t want to commit them)
+pubspec.lock
+
+# Build outputs
+build/
+ios/Pods/
+android/.gradle/
+android/app/build/
+windows/x64/
+linux/build/
+macos/Build/
+web/.dart_tool/
+
+# VS Code / IntelliJ / Android Studio files
+.vscode/
+.idea/
+*.iml
+
+# macOS system files
+.DS_Store
+
+# Android
+*.keystore
+*.jks
+
+# Xcode
+ios/Runner.xcworkspace/
+ios/Pods/
+ios/Podfile.lock
+DerivedData/
+xcuserdata/
+
+# Flutter specific
+.flutter-plugins
+.flutter-plugins-dependencies
+.flutter-versions
+
+# Others
+coverage/
