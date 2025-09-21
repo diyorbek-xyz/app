@@ -28,7 +28,7 @@ class _CardWidState extends State<CardWid> {
             fit: BoxFit.cover,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween, 
               children: [
                 Container(
                   width: 20,
