@@ -10,9 +10,9 @@ class Anime extends StatefulWidget {
 class _AnimeState extends State<Anime> {
   @override
   Widget build(BuildContext context) {
-    final args =
-        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
-    final name = args['name'];
+    // final args =
+    //     ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    // final name = args['name'];
     return Scaffold(
       body: SafeArea(
         child: Column(
