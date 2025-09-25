@@ -14,14 +14,14 @@ class _PlanCardState extends State<PlanCard> {
     return Material(
       color: colors.primary,
       borderRadius: BorderRadius.circular(5),
+      clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: () {},
         splashColor: Color.lerp(colors.primary, Colors.white, .3),
-        child: Padding(
-          padding: EdgeInsetsGeometry.all(10),
+        child: Center(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 widget.title,

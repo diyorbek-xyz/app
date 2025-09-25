@@ -3,6 +3,7 @@ import 'package:application/pages/all.dart';
 import 'package:application/pages/anime.dart';
 import 'package:application/pages/search.dart';
 import 'package:application/pages/home.dart';
+import 'package:application/pages/settings.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -25,24 +26,28 @@ class MyApp extends StatelessWidget {
           onSecondary: Colors.white,
           error: Color(0xFFB00020),
           onError: Colors.white,
-          surface: Colors.amber,
+          surface: Colors.white,
           onSurface: Colors.black,
         ),
         useMaterial3: true,
       ),
-      routes: {"/": (context) => Layout(), "/anime": (context) => Anime()},
+      routes: {
+        "/": (context) => Main(),
+        "/anime": (context) => Anime(),
+        "/settings": (context) => SettingsPage(),
+      },
       initialRoute: "/",
     );
   }
 }
 
-class Layout extends StatefulWidget {
-  const Layout({super.key});
+class Main extends StatefulWidget {
+  const Main({super.key});
   @override
-  State<StatefulWidget> createState() => _LayoutState();
+  State<StatefulWidget> createState() => _MainState();
 }
 
-class _LayoutState extends State<Layout> {
+class _MainState extends State<Main> {
   final List<Widget> pages = [
     HomePage(
       data: [

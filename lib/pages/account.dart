@@ -22,7 +22,7 @@ class _AccountPageState extends State<AccountPage> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           IconButton(
-            onPressed: () {},
+            onPressed: () => Navigator.pushNamed(context, "/settings"),
             padding: EdgeInsets.all(17),
             icon: Icon(Icons.settings_rounded, size: 35),
           ),
@@ -62,7 +62,7 @@ class _AccountPageState extends State<AccountPage> {
             padding: EdgeInsets.all(10),
             mainAxisSpacing: 10,
             crossAxisSpacing: 10,
-            childAspectRatio: 1.4,
+            childAspectRatio: 1.5,
             children: [
               PlanCard(title: "1-OY"),
               PlanCard(title: "3-OY"),
