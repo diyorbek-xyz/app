@@ -45,7 +45,7 @@ class _HomeCarousel extends State<HomeCarousel> {
               spacing: 12,
               children: [
                 Text(
-                  "Naruto Boron Yilnomalari",
+                  i.toString(),
                   style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
@@ -58,7 +58,7 @@ class _HomeCarousel extends State<HomeCarousel> {
                   style: TextStyle(color: colors.onTertiary),
                   "Yilnomalar bo'roni yosh ninja Naruto Uzumaki va uning do'stlarining sarguzashtlari haqidagi hikoyani davom ettiradi. Serial boshlanganiga uch yil bo‘ldi, qahramonlar ulg‘ayib, hayotiy tajriba orttirmoqda, mahoratini oshirmoqda. Naruto Yashirin Barg qishlog'iga qaytadi va ilgari u, Sasuke va Sakura islohotlaridan iborat jamoa. Undagi Sasuke o'rnini Sai ismli yosh nindzya egallaydi va ular birgalikda \"Kakashi jamoasi\" nomini olishadi. Ammo bulutsiz hayot uzoq davom etmaydi. Konoxada birinchi Xokage qoldirgan eski kelishmovchiliklar yana avj oldi. Akatsuki rahbari dunyo hukmronligini orzu qiladi va Qum qishlog'ida eski sirlar qayta paydo bo'ladi. Tez orada butun dunyo jiddiy sinovlar va og'ir zarbalarga duch keladi.",
                 ),
-                Button(icon: Icons.remove_red_eye_rounded, label: "Ko'rish"),
+                WidButton(icon: Icons.remove_red_eye_rounded, label: "Ko'rish",name: i,),
               ],
             ),
           ),

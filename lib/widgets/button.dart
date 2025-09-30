@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 
-class Button extends StatelessWidget {
-  const Button({super.key, required this.icon, required this.label});
+class WidButton extends StatelessWidget {
+  const WidButton({
+    super.key,
+    required this.icon,
+    required this.label,
+    this.name,
+  });
   final IconData icon;
   final String label;
+  final String? name;
+
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
@@ -22,7 +29,7 @@ class Button extends StatelessWidget {
       onPressed: () => Navigator.pushNamed(
         context,
         "/anime",
-        arguments: {"name": "Diyorbek"},
+        arguments: {"name": name ?? "Diyorbek"},
       ),
       icon: Icon(icon),
       label: Text(label),

@@ -13,6 +13,7 @@ class AllPage extends StatefulWidget {
 class _AllPageState extends State<AllPage> {
   @override
   Widget build(BuildContext context) {
+    print(widget.data[1]);
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -27,7 +28,7 @@ class _AllPageState extends State<AllPage> {
             itemCount: widget.data.length,
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
-            itemBuilder: (context, index) => CardWid(),
+            itemBuilder: (context, index) => CardWid(name: widget.data[index]),
           ),
         ],
       ),

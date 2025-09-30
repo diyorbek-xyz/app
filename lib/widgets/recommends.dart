@@ -28,7 +28,7 @@ class _RecommendsState extends State<Recommends> {
             enableInfiniteScroll: false,
           ),
           items: widget.data.map((i) {
-            return CardWid();
+            return CardWid(name: i);
           }).toList(),
         ),
       ],

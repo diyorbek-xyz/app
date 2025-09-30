@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Anime extends StatefulWidget {
+  // final String name;
   const Anime({super.key});
+  // const Anime({Key? key, required this.name}) : super(key: key);
 
   @override
   State<Anime> createState() => _AnimeState();
@@ -10,9 +12,9 @@ class Anime extends StatefulWidget {
 class _AnimeState extends State<Anime> {
   @override
   Widget build(BuildContext context) {
-    // final args =
-    //     ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
-    // final name = args['name'];
+    final args =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    final name = args['name'];
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -22,7 +24,7 @@ class _AnimeState extends State<Anime> {
               onPressed: () => Navigator.pop(context),
               icon: Icon(Icons.keyboard_arrow_left_rounded, size: 40),
             ),
-            Text("Bu yerda Animeni ko'rish mumkin edi"),
+            Text("Bu yerda $name ko'rish mumkin edi"),
           ],
         ),
       ),

@@ -36,6 +36,15 @@ class MyApp extends StatelessWidget {
         "/anime": (context) => Anime(),
         "/settings": (context) => SettingsPage(),
       },
+      // onGenerateRoute: (settings) {
+      //   if (settings.name == "/anime") {
+      //     final arg = settings.arguments as Map<String, dynamic>;
+      //     return MaterialPageRoute(
+      //       builder: (context) => Anime(name: arg['name']),
+      //     );
+      //   }
+      //   return null;
+      // },
       initialRoute: "/",
     );
   }
@@ -50,18 +59,19 @@ class Main extends StatefulWidget {
 class _MainState extends State<Main> {
   final List<Widget> pages = [
     HomePage(
+      carousel: ['Naruto', "Boruto", "Saruto"],
       data: [
         {
           'title': "Yangi animelar",
-          'data': [1, 2, 3, 4],
+          'data': ["Naruto", "Boruto", "Saruto"],
         },
         {
           'title': "Mashxur animelar",
-          'data': [1, 2, 3, 4],
+          'data': ["Naruto", "Boruto", "Saruto"],
         },
       ],
     ),
-    AllPage(data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]),
+    AllPage(data: ["Naruto", "Boruto", "Saruto"]),
     SearchPage(),
     AccountPage(),
   ];

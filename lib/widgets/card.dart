@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CardWid extends StatefulWidget {
-  const CardWid({super.key});
+  final String? name;
+  const CardWid({super.key, this.name});
   @override
   State<CardWid> createState() => _CardWidState();
 }
@@ -20,7 +21,7 @@ class _CardWidState extends State<CardWid> {
           onTap: () => Navigator.pushNamed(
             context,
             "/anime",
-            arguments: {"name": "Mubina"},
+            arguments: {"name": widget.name ?? "naruto"},
           ),
           splashColor: Colors.white12,
           child: Ink.image(
@@ -28,7 +29,7 @@ class _CardWidState extends State<CardWid> {
             fit: BoxFit.cover,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween, 
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
                   width: 20,
@@ -52,7 +53,7 @@ class _CardWidState extends State<CardWid> {
                   padding: EdgeInsets.all(5),
                   color: Color.lerp(colors.tertiary, Colors.transparent, 0.5),
                   child: Text(
-                    "Naruto",
+                    widget.name ?? "naruto",
                     style: const TextStyle(fontSize: 20, color: Colors.white),
                   ),
                 ),
