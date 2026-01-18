@@ -37,7 +37,7 @@ class _AccountPageState extends State<AccountPage> {
             padding: EdgeInsets.all(3),
             child: CircleAvatar(
               radius: 100,
-              backgroundImage: AssetImage('assets/images/image.jpeg'),
+              backgroundImage: AssetImage('assets/images/image.png'),
             ),
           ),
           Container(

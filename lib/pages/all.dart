@@ -17,7 +17,6 @@ class _AllPageState extends State<AllPage> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          HomeHeaderWidget(title: "Hamma Animelar", link: "news"),
           GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,

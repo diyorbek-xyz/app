@@ -4,9 +4,20 @@ import 'package:application/pages/anime.dart';
 import 'package:application/pages/search.dart';
 import 'package:application/pages/home.dart';
 import 'package:application/pages/settings.dart';
+import 'package:application/styles/theme.dart';
+import 'package:application/widgets/navigation_rail.dart';
+import 'package:application/widgets/navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: '.env');
+  await Supabase.initialize(
+    url: dotenv.env["TEST_API_URL"] ?? "undefined",
+    anonKey: dotenv.env["TEST_API_KEY"] ?? "undefined",
+  );
   runApp(const MyApp());
 }
 
@@ -17,34 +28,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: const ColorScheme(
-          brightness: Brightness.light,
-          primary: Colors.amber,
-          onPrimary: Colors.white,
-          secondary: Color(0xFF000000),
-          onSecondary: Colors.white,
-          error: Color(0xFFB00020),
-          onError: Colors.white,
-          surface: Colors.white,
-          onSurface: Colors.black,
-        ),
-        useMaterial3: true,
-      ),
+      theme: ThemeData(colorScheme: theme, useMaterial3: true),
       routes: {
         "/": (context) => Main(),
         "/anime": (context) => Anime(),
         "/settings": (context) => SettingsPage(),
       },
-      // onGenerateRoute: (settings) {
-      //   if (settings.name == "/anime") {
-      //     final arg = settings.arguments as Map<String, dynamic>;
-      //     return MaterialPageRoute(
-      //       builder: (context) => Anime(name: arg['name']),
-      //     );
-      //   }
-      //   return null;
-      // },
       initialRoute: "/",
     );
   }
@@ -57,13 +46,34 @@ class Main extends StatefulWidget {
 }
 
 class _MainState extends State<Main> {
+  int _selectedIndex = 0;
+  bool _expanded = false;
+  void _onDestinationSelected(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  void _expand() {
+    setState(() {
+      _expanded = !_expanded;
+    });
+  }
+
+  final List<String> _headers = [
+    "Asosiy sahifa",
+    "Barcha animelar",
+    "Animelarni qidirish",
+    "Saqlangan animelar",
+    "Profil",
+  ];
   final List<Widget> pages = [
     HomePage(
       carousel: ['Naruto', "Boruto", "Saruto"],
       data: [
         {
           'title': "Yangi animelar",
-          'data': ["Naruto", "Boruto", "Saruto"],
+          'data': ["Naruto", "Boruto", "Saruto", "Anime", "Anime"],
         },
         {
           'title': "Mashxur animelar",
@@ -73,33 +83,48 @@ class _MainState extends State<Main> {
     ),
     AllPage(data: ["Naruto", "Boruto", "Saruto"]),
     SearchPage(),
+    SearchPage(),
     AccountPage(),
   ];
+
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-
+    double width = MediaQuery.of(context).size.width;
     return SafeArea(
-      child: DefaultTabController(
-        length: 4,
-        child: Scaffold(
-          drawerScrimColor: colors.error,
-          backgroundColor: Colors.amber[50],
-          body: TabBarView(children: pages),
-          bottomNavigationBar: TabBar(
-            tabAlignment: TabAlignment.fill,
-            dividerHeight: 0,
-            labelColor: colors.onPrimary,
-            indicator: BoxDecoration(color: colors.primary),
-            indicatorSize: TabBarIndicatorSize.tab,
-            tabs: const [
-              Tab(icon: Icon(Icons.home_rounded), text: "Home"),
-              Tab(icon: Icon(Icons.grid_view_rounded), text: "Settings"),
-              Tab(icon: Icon(Icons.search_rounded), text: "Search"),
-              Tab(icon: Icon(Icons.account_circle_rounded), text: "Account"),
-            ],
+      child: Scaffold(
+        drawerScrimColor: colors.error,
+        backgroundColor: Colors.amber[50],
+        appBar: AppBar(
+          actions: [
+            IconButton(onPressed: _expand, icon: Icon(Icons.settings_rounded)),
+          ],
+          leading: IconButton(
+            onPressed: _expand,
+            icon: Icon(Icons.menu_rounded),
           ),
+          toolbarHeight: 80,
+          title: Text(_headers[_selectedIndex]),
         ),
+        body: Row(
+          children: [
+            if (width > 500)
+              WidgetNavigationRail(
+                extended: _expanded,
+                selectedIndex: _selectedIndex,
+                onDestinationSelected: _onDestinationSelected,
+              ),
+            Expanded(
+              child: IndexedStack(index: _selectedIndex, children: pages),
+            ),
+          ],
+        ),
+        bottomNavigationBar: width < 500
+            ? WidgetNavigationBar(
+                selectedIndex: _selectedIndex,
+                onDestinationSelected: _onDestinationSelected,
+              )
+            : null,
       ),
     );
   }

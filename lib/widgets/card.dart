@@ -25,7 +25,7 @@ class _CardWidState extends State<CardWid> {
           ),
           splashColor: Colors.white12,
           child: Ink.image(
-            image: AssetImage("assets/images/image.jpeg"),
+            image: AssetImage("assets/images/image.png"),
             fit: BoxFit.cover,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -39,7 +39,7 @@ class _CardWidState extends State<CardWid> {
                       color: Color.lerp(
                         colors.tertiary,
                         Colors.transparent,
-                        0.8,
+                        1,
                       ),
                       borderRadius: BorderRadius.all(Radius.circular(4)),
                     ),

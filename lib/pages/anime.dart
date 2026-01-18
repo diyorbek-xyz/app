@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
 
 class Anime extends StatefulWidget {
   // final String name;
@@ -24,7 +25,16 @@ class _AnimeState extends State<Anime> {
               onPressed: () => Navigator.pop(context),
               icon: Icon(Icons.keyboard_arrow_left_rounded, size: 40),
             ),
-            Text("Bu yerda $name ko'rish mumkin edi"),
+            Column(
+              children: [
+                VideoPlayer(
+                  VideoPlayerController.asset(
+                    "assets/videos/video.mp4",
+                    viewType: VideoViewType.textureView,
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
